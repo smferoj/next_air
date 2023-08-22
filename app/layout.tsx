@@ -19,12 +19,15 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {
+}) 
+{
+
+
   return (
     <html lang="en">
       <body className={font.className}>
         <ClientOnly>
-          <Modal title="Hello" isOpen />
+          <Modal title="Hello world" isOpen />
         <Navbar/>
         </ClientOnly>
         

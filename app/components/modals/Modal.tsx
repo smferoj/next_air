@@ -1,9 +1,10 @@
 'use client'
 import { useCallback, useEffect, useState } from "react";
 import {IoMdClose} from 'react-icons/io'
+import Button from "../Button";
  interface ModalProps{
     isOpen?: boolean;
-    onClose: () => void;
+    onClose:() => void;
     onSubmit: () => void;
     title?: string;
     body?: React.ReactElement;
@@ -37,11 +38,9 @@ const Modal: React.FC<ModalProps> = ({
         if (disabled) {
           return;
         }
-
      setShowModal(false);
-    setTimeout(() => {
-      onClose();
-    }, 300)
+     setTimeout(() => 
+     {onClose()}, 300)
   }, [onClose, disabled]);
 
   const handleSubmit = useCallback(() => {
@@ -78,19 +77,32 @@ const handleSecondaryAction = useCallback(() => {
             <div className=" translate h-full lg:h-auto md:h-auto border-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*  Header */}
 
-                <div className="flex items-center p-6 rounded-t justify-center relative border-b-[1px]"> 
-
+                <div className="flex items-center justify-between gap-5 p-4 rounded-t relative border-b-[1px]"> 
                 <button 
                   onClick={handleClose}
-                className="p-1 border-0 hover:opacity-70 transition absolute left-9">
-                  
+                className="p-1 border-0 hover:opacity-70 transition  left-10">
                   <IoMdClose size ={18}/>
                 </button>
                 <div className="text-lg font-semibold">
                   {title}
                 </div>
-
                 </div>
+                {/* Body */}
+                 <div className="relative p-6 flex-auto">
+                  {body}
+                 </div>
+                 {/* Footer */}
+                     
+                     <div className="flex flex-col gap-2 p-6">
+                      
+
+                      <div className="flex flex-row items-center gap-4 pt-2 w-full">
+
+                        <Button  label="My Button"/>
+                      </div>
+                     </div>
+
+                
             </div>
 
          </div>
